@@ -12,3 +12,5 @@ The button is clicked (Clicked event handler is called; Command is executed).
 **Actual Behavior**
 The Button is not clicked (Clicked is not called; Command is not executed).
 
+**Link to issue**
+https://github.com/mono/SkiaSharp/issues/2367
