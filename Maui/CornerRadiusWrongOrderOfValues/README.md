@@ -11,4 +11,4 @@ The BoxView should have rounder corners on the right side.
 The BoxView has the bottom left corner rounded instead of the bottom right.
 
 **Link to issue**
-pending
+https://github.com/dotnet/maui/issues/13136
