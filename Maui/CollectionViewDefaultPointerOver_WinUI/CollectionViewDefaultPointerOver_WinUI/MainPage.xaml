@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionViewDefaultPointerOver_WinUI.MainPage">
+
+    <CollectionView HeightRequest="500" x:Name="colView" SelectionMode="Single">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Label Text="{Binding .}">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal" />
+                                <VisualState Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="#40FFFF00"/>
+                                        <Setter Property="TextColor" Value="Purple" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="Disabled"/>
+                                <VisualState Name="Selected"/>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+                </Label>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+</ContentPage>
