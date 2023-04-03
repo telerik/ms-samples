@@ -1,5 +1,5 @@
 **Description of the issue**
-Maui: [MacCatalyst] [iOS] Label does not wrap when the width is smaller than the desired size of the control
+Maui: [MacCatalyst] [iOS] Label goes out of the bounds of its parent when it has a bigger desired width than the parent constraints
 
 **Steps to reproduce:**
 1. Run the project.
@@ -12,4 +12,4 @@ The Label should be wrapped as the width of the parent is smaller than the desir
 The Label does not wrap.
 
 **Link to issue**
-TBD
+https://github.com/dotnet/maui/issues/14368
