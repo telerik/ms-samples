@@ -11,4 +11,4 @@ The Entry that is in the first Grid column should be fully seen and should be la
 The Entry is getting cut off because it was arranged with size smaller than needed.
 
 **Link to issue**
-to be included
+https://github.com/dotnet/maui/issues/14494
