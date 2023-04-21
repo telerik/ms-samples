@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MeasureIssueApp"
+             x:Class="MeasureIssueApp.MainPage">
+    <local:MyVerticalStackLayout>
+        <local:MyVerticalStackLayout BackgroundColor="Blue">
+            <BoxView x:Name="border"
+                     BackgroundColor="Red" />
+            <Button Text="Expand" 
+                    Margin="10"
+                    Clicked="Button_Clicked" />
+        </local:MyVerticalStackLayout>
+    </local:MyVerticalStackLayout>
+</ContentPage>
