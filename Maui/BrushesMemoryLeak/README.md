@@ -17,4 +17,4 @@ Expected result is for the pages to get released from memory, and so the number 
 The pages remain in memory, they are not released, and so memory is accumulated over time, and there is a memory leak.
 
 **Link to issue**
-soon
+https://github.com/dotnet/maui/issues/15231
