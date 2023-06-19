@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="MauiApp10.ChatViewResources"
+                    xmlns:local="clr-namespace:MauiApp10">
+
+    <ControlTemplate x:Key="ChatView_ControlTemplate">
+        <Grid IsClippedToBounds="True">
+            <Grid IsClippedToBounds="True"
+                  RowSpacing="2"
+                  RowDefinitions="*, Auto">
+                <CollectionView x:Name="ChatList" BackgroundColor="LightGray" />
+                <ContentView VerticalOptions="End"
+                             Content="{TemplateBinding TypingIndicator}" />
+                <ContentView VerticalOptions="End" />
+                <Grid Grid.Row="1"
+                      ColumnDefinitions="*, Auto">
+                    <Entry VerticalOptions="Center" />
+                    <ImageButton Grid.Column="1"
+                                 Source="dotnet_bot.png"
+                                 WidthRequest="{OnPlatform Default=24, WinUI=22}"
+                                 Aspect="AspectFit"
+                                 VerticalOptions="Center" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </ControlTemplate>
+
+</ResourceDictionary>
