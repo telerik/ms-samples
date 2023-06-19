@@ -11,4 +11,4 @@ The app should load with no errors.
 An exception is thrown and the app crashes.
 
 **Link to issue**
-coming soon
+https://github.com/dotnet/maui/issues/15729
