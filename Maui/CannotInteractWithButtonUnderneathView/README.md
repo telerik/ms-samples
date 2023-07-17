@@ -10,3 +10,6 @@ The button reacts to the interaction - the `Clicked` event is fired and an alert
 
 **Actual Behavior**
 The button does not react to interaction - the `Clicked` event is not fired - on `iOS` and `MacCatalyst`.
+
+**Link to issue**
+https://github.com/dotnet/maui/issues/15913
