@@ -12,4 +12,4 @@ The item should be removed and the CollectionView should become empty.
 An exception is thrown.
 
 **Link to issue**
-
+https://github.com/dotnet/maui/issues/16324
