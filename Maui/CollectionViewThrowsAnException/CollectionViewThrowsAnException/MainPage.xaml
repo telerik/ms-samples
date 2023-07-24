@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionViewThrowsAnException.MainPage">
+
+    <Grid>
+        <Grid RowDefinitions="Auto, *">
+            <CollectionView x:Name="cv1" BackgroundColor="LightSalmon">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+            <Label Text="A Label under the CollectionView" Grid.Row="1" />
+        </Grid>
+        <Button Text="add" Clicked="ButtonAdd_Clicked" HorizontalOptions="End" VerticalOptions="Start" />
+    </Grid>
+
+</ContentPage>
