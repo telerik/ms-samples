@@ -12,4 +12,4 @@ The second item should be added in the CollectionView, and the CollectionView sh
 An exception is thrown.
 
 **Link to issue**
-https://github.com/dotnet/maui/issues/16320
+https://github.com/dotnet/maui/issues/16320 
