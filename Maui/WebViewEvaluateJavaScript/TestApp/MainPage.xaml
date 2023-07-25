@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.MainPage">
+    <Grid RowDefinitions="Auto, *, Auto, *, Auto, *, Auto, *"
+          RowSpacing="5"
+          Margin="5">
+        <Label Grid.Row="0"
+               Text="WebView" />
+        <WebView x:Name="webView"
+                 Grid.Row="1" />
+        <Grid Grid.Row="2"
+              ColumnDefinitions="*, Auto"
+              ColumnSpacing="5">
+            <Label Grid.Column="0"
+                   Text="HTML"
+                   VerticalOptions="Center" />
+            <Button Grid.Column="1"
+                    Text="Load"
+                    WidthRequest="100"
+                    Clicked="OnLoadClicked" />
+        </Grid>
+        <Editor x:Name="htmlEditor"
+                Grid.Row="3" />
+        <Grid Grid.Row="4"
+              ColumnDefinitions="*, Auto"
+              ColumnSpacing="5">
+            <Label Grid.Column="0"
+                   Text="Script"
+                   VerticalOptions="Center" />
+            <Button Grid.Column="1"
+                    Text="Evaluate"
+                    WidthRequest="100"
+                    Clicked="OnEvaluateClicked" />
+        </Grid>
+        <Editor x:Name="scriptEditor"
+                Grid.Row="5" />
+        <Label Grid.Row="6"
+               Text="Result" />
+        <Editor x:Name="resultEditor"
+                Grid.Row="7"
+                IsReadOnly="True" />
+    </Grid>
+</ContentPage>
