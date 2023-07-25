@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TestApp"
+             x:Class="TestApp.MainPage">
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="controlTemplate">
+            <CollectionView BindingContext="{Binding BindingContext, Source={RelativeSource Mode=TemplatedParent}}"
+                            ItemsSource="{Binding ItemsSource}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HeightRequest="50" local:MemoryTracker.IsTracked="True">
+                            <Label Text="{Binding}" VerticalOptions="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ControlTemplate>
+    </ContentPage.Resources>
+    <Grid Margin="10"
+          RowDefinitions="Auto, *"
+          RowSpacing="10">
+        <VerticalStackLayout Spacing="10">
+            <Button Text="Refresh Items Source"
+                    WidthRequest="200"
+                    HorizontalOptions="Start"
+                    Command="{Binding RefreshItemsSourceCommand}" />
+            <Button Text="Refresh Memory Info"
+                    WidthRequest="200"
+                    HorizontalOptions="Start"
+                    Command="{Binding RefreshMemoryInfoCommand}" />
+            <Button Text="Recreate Control"
+                    WidthRequest="200"
+                    HorizontalOptions="Start"
+                    Clicked="OnRecreateClicked" />
+            <Label Text="{Binding MemoryInfo}" />
+        </VerticalStackLayout>
+        <ContentView x:Name="contentView"
+                     Grid.Row="1"
+                     ControlTemplate="{StaticResource controlTemplate}" />
+    </Grid>
+</ContentPage>
