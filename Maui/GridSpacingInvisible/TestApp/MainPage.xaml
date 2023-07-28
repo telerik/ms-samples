@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.MainPage">
+    <VerticalStackLayout Margin="10" Spacing="10">
+        <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+            <Label x:Name="homeLabel" Grid.Column="0" VerticalOptions="Center" Text="Home Button Visible" />
+            <Switch x:Name="homeSwitch" Grid.Column="1" VerticalOptions="Center" IsToggled="True" />
+        </Grid>
+        <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+            <Label x:Name="backLabel" Grid.Column="0" VerticalOptions="Center" Text="Back Button Visible" />
+            <Switch x:Name="backSwitch" Grid.Column="1" VerticalOptions="Center" IsToggled="True" />
+        </Grid>
+        <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+            <Label x:Name="goLabel" Grid.Column="0" VerticalOptions="Center" Text="Go Button Visible" />
+            <Switch x:Name="goSwitch" Grid.Column="1" VerticalOptions="Center" IsToggled="True" />
+        </Grid>
+        <Border StrokeThickness="1" Stroke="Black" Padding="5">
+            <Grid ColumnDefinitions="Auto, Auto, *, Auto" ColumnSpacing="20">
+                <Button x:Name="homeButton" Grid.Column="0" Text="Home" IsVisible="{Binding IsToggled, Source={x:Reference homeSwitch}}" />
+                <Button x:Name="backButton" Grid.Column="1" Text="Back" IsVisible="{Binding IsToggled, Source={x:Reference backSwitch}}" />
+                <Entry x:Name="urlEntry" Grid.Column="2" VerticalOptions="Center" Placeholder="URL" />
+                <Button x:Name="goButton" Grid.Column="3" Text="Go" IsVisible="{Binding IsToggled, Source={x:Reference goSwitch}}" />
+            </Grid>
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>
