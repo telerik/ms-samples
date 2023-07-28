@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TestApp"
+             x:Class="TestApp.MainPage">
+    <ContentPage.Resources>
+        <local:KeyValueConverter x:Key="colorConverter">
+            <Color x:Key="Black">Black</Color>
+            <Color x:Key="Red">Red</Color>
+            <Color x:Key="Green">Green</Color>
+            <Color x:Key="Blue">Blue</Color>
+            <Color x:Key="Cyan">Cyan</Color>
+            <Color x:Key="Magenta">Magenta</Color>
+            <Color x:Key="Yellow">Yellow</Color>
+            <Color x:Key="Gray">Gray</Color>
+        </local:KeyValueConverter>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <local:MainViewModel />
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="Auto, *"
+          RowSpacing="10"
+          Margin="10">
+        <HorizontalStackLayout Spacing="10">
+            <Image>
+                <Image.Source>
+                    <FontImageSource FontFamily="FontAwesomeSolid"
+                                     Glyph="&#xf57d;"
+                                     Size="72"
+                                     Color="{Binding SelectedColor, Converter={StaticResource colorConverter}}" />
+                </Image.Source>
+            </Image>
+            <Label Text="Hello, World!!!"
+                   TextColor="{Binding SelectedColor, Converter={StaticResource colorConverter}}"
+                   FontSize="36"
+                   VerticalOptions="Center" />
+        </HorizontalStackLayout>
+        <CollectionView Grid.Row="1"
+                        SelectionMode="Single"
+                        ItemsSource="{Binding Colors}"
+                        SelectedItem="{Binding SelectedColor}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="Auto, *"
+                          ColumnSpacing="10">
+                        <Border Grid.Column="0"
+                                WidthRequest="20"
+                                HeightRequest="20"
+                                BackgroundColor="{Binding Converter={StaticResource colorConverter}}" />
+                        <Label Grid.Column="1"
+                               Text="{Binding}"
+                               TextColor="{Binding Converter={StaticResource colorConverter}}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
+
