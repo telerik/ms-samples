@@ -13,4 +13,4 @@ The Unloaded event of the innerGrid element should have not been raised, as it w
 The Unloaded event of the innerGrid element is raised, but the Loaded is never raised after that, leaving custom logic done in Loaded/Unloaded to malfunction.
 
 **Link to issue**
-to be added
+https://github.com/dotnet/maui/issues/16697
