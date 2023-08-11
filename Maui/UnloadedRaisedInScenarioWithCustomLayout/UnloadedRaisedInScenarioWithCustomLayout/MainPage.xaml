@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:UnloadedRaisedInScenarioWithCustomLayout"
+             x:Class="UnloadedRaisedInScenarioWithCustomLayout.MainPage">
+
+    <Grid RowDefinitions="Auto, *, Auto">
+        <Button Text="navigate" Clicked="Button_Clicked" />
+        <CollectionView ItemsSource="{Binding Log, Source={Reference custom}}" Grid.Row="1" />
+        <local:CustomLayout x:Name="custom" BackgroundColor="DarkGray" Grid.Row="2" Margin="5" />
+    </Grid>
+    
+</ContentPage>
