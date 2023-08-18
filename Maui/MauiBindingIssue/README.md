@@ -13,3 +13,4 @@ The Entry should update its UI when the text is set to empty from the ViewModel.
 The Entry doesn't change its Text.
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/16849
