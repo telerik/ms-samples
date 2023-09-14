@@ -14,4 +14,4 @@ Nothing happens, MeasureOverride and ArrangeOverride are not invoked. The only t
 "::: CustomContentView OnMaxChanged"
 
 **Link to issue**
-soon
+https://github.com/dotnet/maui/issues/17367
