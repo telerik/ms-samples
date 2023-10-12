@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SliderWithPadding_WinUIIssue", "SliderWithPadding_WinUIIssue\SliderWithPadding_WinUIIssue.csproj", "{6E894005-CC32-4DF3-B160-FA157F20A8EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E894005-CC32-4DF3-B160-FA157F20A8EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E894005-CC32-4DF3-B160-FA157F20A8EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E894005-CC32-4DF3-B160-FA157F20A8EE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6E894005-CC32-4DF3-B160-FA157F20A8EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E894005-CC32-4DF3-B160-FA157F20A8EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E894005-CC32-4DF3-B160-FA157F20A8EE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {839EE607-0577-413F-8909-364769A34CF4}
+	EndGlobalSection
+EndGlobal
