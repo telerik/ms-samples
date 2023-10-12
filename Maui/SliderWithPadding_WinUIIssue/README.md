@@ -12,3 +12,4 @@ The `Slider` thumb should move and the `Slider` value should change.
 Layout cycle occurs and the app crashes.
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/17974
