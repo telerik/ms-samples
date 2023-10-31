@@ -14,3 +14,4 @@ The Label inside the VerticalStackLayout should be displayed correctly and when 
 The Label inside the VerticalStackLayout is not displayed correctly and when new Text is added the UI is not updated.
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/18450
