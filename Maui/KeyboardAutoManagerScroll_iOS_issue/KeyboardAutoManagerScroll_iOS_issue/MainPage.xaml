@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeyboardAutoManagerScroll_iOS_issue.MainPage">
+    
+    <Grid RowDefinitions="*, Auto">
+        <VerticalStackLayout Grid.Row="1">
+            <Entry Placeholder="Entry 1"/>
+            <Entry Placeholder="Entry 2"/>
+            <Entry Placeholder="Entry 3"/>
+            <Entry Placeholder="Entry 4"/>
+            <Entry Placeholder="Entry 5"/>
+            <Entry Placeholder="Entry 6"/>
+            <Entry Placeholder="Entry 7"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
