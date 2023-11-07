@@ -12,3 +12,4 @@ The entry should be translated over the keyboard.
 The entry is translated, however still stays under the keyboard on `iOS`.
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/18564
