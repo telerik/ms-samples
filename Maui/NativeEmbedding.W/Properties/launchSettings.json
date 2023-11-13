@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "NativeEmbedding.W (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "NativeEmbedding.W (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
