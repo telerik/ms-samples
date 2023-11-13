@@ -11,4 +11,4 @@ We hit the two breakpoints for the Loaded event of the Maui Grid and Button and 
 We don't hit any breakpoints 
 
 **Link to issue**
-coming soon ...
+https://github.com/dotnet/maui/issues/18714
