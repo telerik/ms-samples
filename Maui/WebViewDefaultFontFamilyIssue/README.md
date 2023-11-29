@@ -12,4 +12,4 @@ The font family (and font size) in a default paragraph in WebView should be the 
 The font family (and font size) in a default paragraph in WebView is different than the font family for Label/Entry.
 
 **Link to issue**
-
+https://github.com/dotnet/maui/issues/19114
