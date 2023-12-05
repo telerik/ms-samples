@@ -12,4 +12,4 @@ The colors should get reloaded in a couple of seconds (in my setup net7 loads in
 The colors get reloaded very slowly (in my setup net8 loads in 15 second on WinUI, and I gave up waiting Android and iOS after 3 minutes).
 
 **Link to issue**
-to be
+https://github.com/dotnet/maui/issues/19229
