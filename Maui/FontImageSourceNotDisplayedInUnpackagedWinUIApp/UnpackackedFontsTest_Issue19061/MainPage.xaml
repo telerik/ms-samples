@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UnpackackedFontsTest_Issue19061.MainPage"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui">
+
+    <VerticalStackLayout>
+        <Image x:Name="i3" WidthRequest="100" HeightRequest="100" Background="#33EE22AA">
+            <Image.Source>
+                <FontImageSource Glyph="&#xe85b;" FontFamily="telerikfontexamples" />
+            </Image.Source>
+        </Image>
+
+    </VerticalStackLayout>
+
+</ContentPage>
