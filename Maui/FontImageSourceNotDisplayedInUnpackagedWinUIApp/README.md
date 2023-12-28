@@ -11,4 +11,4 @@ The `Image` should display the glyph from the custom font, it should look like a
 The `Image` does not display the glyph properly, just some rectangle is drawn.
 
 **Link to issue**
-to be
+https://github.com/dotnet/maui/issues/19608
