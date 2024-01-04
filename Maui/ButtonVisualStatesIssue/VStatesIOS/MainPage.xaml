@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VStatesIOS"
+             x:Class="VStatesIOS.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VisualStateGroupList x:Key="MyButtonStyle_VisualStates">
+                <VisualStateGroup Name="CommonStates">
+                    <VisualState Name="Normal" />
+                    <VisualState Name="Disabled" />
+                    <VisualState Name="PointerOver"/>
+                    <VisualState Name="Pressed" />
+                    <VisualState Name="Focused" />
+
+                    <VisualState Name="Custom">
+                        <VisualState.Setters>
+                            <Setter Property="Button.TextColor" Value="{x:Static local:MyButtonConstants.MyButtonTextColor}" />
+                            <Setter Property="Button.BackgroundColor" Value="{x:Static local:MyButtonConstants.MyButtonBackgroundColor}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+
+            <Style TargetType="local:MyButton" x:Key="MyButtonStyle">
+                <Setter Property="VisualStateManager.VisualStateGroups" Value="{StaticResource MyButtonStyle_VisualStates}"/>
+            </Style>
+
+            <Style TargetType="local:MyButton" BasedOn="{StaticResource MyButtonStyle}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout>
+        <Entry />
+        <Label Text="Button with Custom VisualState through implicit style:" />
+        <local:MyButton Text="MyButton" HorizontalOptions="Start" Margin="10"/>
+
+        <Label Text="Button with Custom VisualState through Style:"/>
+        <local:MyButton Text="MyButton" HorizontalOptions="Start" Margin="10" Style="{StaticResource MyButtonStyle}"/>
+
+        <Label Text="Button with Custom and Normal VisualState:"/>
+        <local:MyButton Text="MyButton" HorizontalOptions="Start" Margin="10">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroupList>
+                    <VisualStateGroup Name="CommonStates">
+                        <VisualState Name="Normal" />
+                        <VisualState Name="Disabled" />
+                        <VisualState Name="PointerOver"/>
+                        <VisualState Name="Pressed" />
+                        <VisualState Name="Focused" />
+
+                        <VisualState Name="Custom">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="Orange" />
+                                <Setter Property="BackgroundColor" Value="Green" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </VisualStateManager.VisualStateGroups>
+        </local:MyButton>
+
+    </VerticalStackLayout>
+</ContentPage>
