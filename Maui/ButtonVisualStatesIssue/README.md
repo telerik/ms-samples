@@ -15,4 +15,4 @@ When the Button is clicked the second time it sould go to Normal state.
 When the Button is clicked the second time it stays in Custom state.
 
 **Link to issue**
-
+https://github.com/dotnet/maui/issues/19690
