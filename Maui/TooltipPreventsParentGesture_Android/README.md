@@ -12,3 +12,4 @@ The CountCommand execute method should be called.
 The CountCommand execute method is not called.
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/21527
