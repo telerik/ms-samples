@@ -13,3 +13,4 @@ The MyView View should be displayed in the ContentPresenter.
 Instead of the MyView being displayed, a Label is displayed.
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/22027
