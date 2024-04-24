@@ -12,4 +12,4 @@ The application should run.
 XamlParseException is thrown. Multiple properties with name 'ContentViewNewContentIssue.MyContentView.Content' found.'
 
 **Link to issue**
-
+https://github.com/dotnet/maui/issues/22024
