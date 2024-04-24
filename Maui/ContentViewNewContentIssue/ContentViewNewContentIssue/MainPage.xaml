@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ContentViewNewContentIssue"
+             x:Class="ContentViewNewContentIssue.MainPage">
+
+    <ContentPage.Resources>
+        <Style TargetType="local:MyContentView">
+            <Setter Property="Content" Value="MyContent" />
+        </Style>
+        
+        <!-- Uncomment for same issue but with property Margin -->
+        <!--<Style TargetType="local:MyView">
+            <Setter Property="Margin" Value="2.0" />
+        </Style>-->
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout>
+        <local:MyContentView />
+        
+        <!-- Uncomment the Style for MyView - same issue -->
+        <!--<local:MyView HeightRequest="30" BackgroundColor="Blue" />-->
+    </VerticalStackLayout>
+
+</ContentPage>
