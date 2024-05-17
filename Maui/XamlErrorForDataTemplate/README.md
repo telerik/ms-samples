@@ -12,4 +12,4 @@ No error should be displayed.
 The whole DataTemplate is underlined and an error is displayed - "Property DataTemplateContent does not support value of type MyTabViewItem".
 
 **Link to issue**
-to be added
+https://github.com/dotnet/maui/issues/22485
