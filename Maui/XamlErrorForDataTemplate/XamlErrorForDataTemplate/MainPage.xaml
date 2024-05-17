@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamlErrorForDataTemplate"
+             x:Class="XamlErrorForDataTemplate.MainPage">
+
+    <VisualElement.Resources>
+        <DataTemplate x:Key="template1">
+            <local:MyTabViewItem>
+                <local:MyTabViewItem.Header>
+                    <Label Text="{Binding MyHeaderText}" />
+                </local:MyTabViewItem.Header>
+                <local:MyTabViewItem.Content>
+                    <Grid>
+                        <Label Text="{Binding MyContentText}" />
+                    </Grid>
+                </local:MyTabViewItem.Content>
+            </local:MyTabViewItem>
+        </DataTemplate>
+    </VisualElement.Resources>
+
+    <Grid>
+        <local:MyTabView ItemTemplate="{StaticResource template1}" />
+    </Grid>
+    
+</ContentPage>
