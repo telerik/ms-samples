@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WinUIMultipleWindowsLeak.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Label x:Name="WhatToDo" Text="Keep pushing the buttons and whatch stats grow" />
+            <Label x:Name="MauiUIWindowsCount" Text="Alive Windows: 0 / 0" />
+            <Label x:Name="Memory" Text="Memory: N/A" />
+            <Button x:Name="CreateAndCloseOne" Text="Create and close one..." Clicked="OnCreateOneClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
