@@ -46,7 +46,11 @@ A CollectionView is responsible for displaying the images, which are dynamically
 **Expected:** Four images should be displayed in the `MainPage`.
 **Actual:** `The MainPage` is blank.
 
+
 **Environment Details**
 - .NET version: 9.0.100-rc.1.24452.12
 - Target platform: Android (tested on physical device and Pixel 7 - API 35 simulator).
 - Development IDE: Visual Studio 2022 Preview.
+
+
+**Link to logged issue:** https://github.com/dotnet/maui/issues/25283
