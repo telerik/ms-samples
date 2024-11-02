@@ -19,13 +19,46 @@
         <Grid Grid.Row="1" x:Name="HeaderContent">
             <HorizontalStackLayout>
                 <local:TrackingLabel Text="Title" VerticalOptions="Center" Margin="10,0,10,0" FontSize="24" />
-                <local:TrackingBorder Margin="5" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="5" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="5" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
+                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
             </HorizontalStackLayout>
             <HorizontalStackLayout HorizontalOptions="End">
+                <!-- NET9 (net8 leads to layout cycle) -->
                 <Label Text="{Binding LayoutNodes}" VerticalOptions="Center" HorizontalOptions="End" Margin="10,0,10,0" FontSize="14" WidthRequest="120" HeightRequest="30" />
                 <Label Text="{Binding LayoutVirtualNodes}" VerticalOptions="Center" HorizontalOptions="End" Margin="10,0,10,0" FontSize="14" WidthRequest="120" HeightRequest="30" />
+                
             </HorizontalStackLayout>
         </Grid>
         <local:TrackingBorder x:Name="FooterBackground" Grid.Row="3" Background="#AAFFFFFF" />
@@ -34,12 +67,12 @@
             <local:TheScrollView.Template>
                 <DataTemplate x:DataType="local:CellModel">
                     <!-- Slim template: we can't trim further than that -->
-                    <!-- <local:TrackingLabel Virtualized="True" Text="{Binding Text}" Background="{Binding Color}" Margin="2" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" /> -->
+                    <local:TrackingLabel Virtualized="True" Text="{Binding Text}" Background="{Binding Color}" Margin="2" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
 
                     <!-- Medium template: no triggers or visual states -->
-                    <local:TrackingBorder Virtualized="True" Background="{Binding Color}" Margin="1" StrokeThickness="1" Stroke="DarkGray">
+                    <!-- <local:TrackingBorder Virtualized="True" Background="{Binding Color}" Margin="1" StrokeThickness="1" Stroke="DarkGray">
                         <local:TrackingLabel Virtualized="True" Text="{Binding Text}" Margin="2" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                    </local:TrackingBorder>
+                    </local:TrackingBorder> -->
 
                     <!-- Fat template: That would include a border, a grid, icon and a label, maybe interactive with a trigger -->
                 </DataTemplate>

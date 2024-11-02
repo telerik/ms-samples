@@ -7,8 +7,13 @@ public class TheScrollView : ScrollView
 {
     public DataTemplate Template { get; set; }
 
+#if NET8_0
+    const double RowHeight = 100;
+    const double ColumnWidth = 200;
+#elif NET9_0
     const double RowHeight = 50;
     const double ColumnWidth = 140;
+#endif
 
     private Point scroll;
     private Size size;
@@ -61,7 +66,6 @@ public class TheScrollView : ScrollView
     {
         Console.WriteLine("   - ScrollView Measure");
         DateTime start = DateTime.Now;
-        TrackingModel.Instance.LayoutNodes++;
         this.size = base.MeasureOverride(widthConstraint, heightConstraint);
         this.rect = new Rect(this.scroll.X, this.scroll.Y, this.size.Width, this.size.Height);
         Console.WriteLine($"     ScrollView Measured {DateTime.Now - start}");
@@ -111,11 +115,31 @@ public class TheScrollView : ScrollView
 
         public Size ArrangeChildren(Rect bounds)
         {
+#if NET8_0
+            // net8 8.0.82 and 8.0.92 doesn't seem to work without arranging all children...
+            // in net9, we Arrange once during Recycling
+            foreach(var content in this.container.Children)
+            {
+                var cellmodel = (content as View).BindingContext as CellModel;
+                content.Arrange(new Rect(cellmodel.key.x * ColumnWidth, cellmodel.key.y * RowHeight, ColumnWidth, RowHeight));
+            }
+#endif
+
             return new Size(10000, 10000);
         }
 
         public Size Measure(double widthConstraint, double heightConstraint)
         {
+            
+#if NET8_0
+            // net8 8.0.82 and 8.0.92 doesn't seem to work without measuring all children...
+            // in net9, we dont measure
+            foreach(var content in this.container.Children)
+            {
+                content.Measure(double.PositiveInfinity, double.PositiveInfinity);
+            }
+#endif
+
             return new Size(10000, 10000);
         }
 
@@ -180,10 +204,9 @@ public class TheScrollView : ScrollView
                         cellmodel.Text = $"Cell {x} x {y}";
                         elements[key] = content;
 
-                        // We measure and arrange ad-hoc
-#if IOS
-                        content.Arrange(new Rect(cellmodel.key.x * ColumnWidth, cellmodel.key.y * RowHeight, ColumnWidth, RowHeight));
-#else
+
+#if NET9
+                        // Measure Ad-Hoc... seems to only work with 9, in net8 seems the children are layed out by native and this is overridden.
                         content.Measure(double.PositiveInfinity, double.PositiveInfinity);
                         content.Arrange(new Rect(cellmodel.key.x * ColumnWidth, cellmodel.key.y * RowHeight, ColumnWidth, RowHeight));
 #endif
