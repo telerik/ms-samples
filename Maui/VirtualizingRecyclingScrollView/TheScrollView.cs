@@ -213,9 +213,9 @@ public class TheScrollView : ScrollView
                         elements[key] = content;
 
 
-#if NET9
+#if NET9_0_OR_GREATER
                         // Measure Ad-Hoc... seems to only work with 9, in net8 seems the children are layed out by native and this is overridden.
-                        content.Measure(double.PositiveInfinity, double.PositiveInfinity);
+                        // content.Measure(double.PositiveInfinity, double.PositiveInfinity);
                         content.Arrange(new Rect(cellmodel.key.x * ColumnWidth, cellmodel.key.y * RowHeight, ColumnWidth, RowHeight));
 #endif
 
