@@ -13,7 +13,11 @@ public sealed class TrackingModel : INotifyPropertyChanged
     private uint printedLayoutNodes = 0;
     private uint printedLayoutVirtualNodes = 0;
 
-    private IDispatcherTimer timer;
+    private uint droppedFrames = 0;
+
+#if IOS
+    private CoreAnimation.CADisplayLink displayLink;
+#endif
 
     public TrackingModel()
     {
@@ -29,9 +33,51 @@ public sealed class TrackingModel : INotifyPropertyChanged
             }
         };
         timer.Start();
+
+#if IOS
+        this.displayLink = CoreAnimation.CADisplayLink.Create(Frame);
+        this.displayLink.AddToRunLoop(Foundation.NSRunLoop.Main, Foundation.NSRunLoopMode.Common);
+#endif
+    }
+
+    double last = 0;
+
+    // On real device that may be 120. We assume 60-ish on sim.
+    double estimatedFrameLength = 1.05 / 60;
+
+    private void Frame()
+    {
+#if IOS
+        var elapsed = CoreAnimation.CAAnimation.CurrentMediaTime();
+        if (last == 0)
+        {
+            last = elapsed;
+            return;
+        }
+        var duration = elapsed - last;
+
+        // For macOS the simulator runs in 60 fps
+        if (duration > estimatedFrameLength)
+        {
+            var droppedFrames = (uint)Math.Floor(duration / estimatedFrameLength);
+            this.DroppedFrames += droppedFrames;
+            Console.WriteLine($"Dropped {this.DroppedFrames} frames! Next frame duration: {duration}");
+        }
+        this.last = elapsed;
+#endif
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
+
+    public uint DroppedFrames
+    {
+        get => this.droppedFrames;
+        set
+        {
+            this.droppedFrames = value;
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DroppedFrames)));
+        }
+    }
 
     public uint LayoutNodes
     {

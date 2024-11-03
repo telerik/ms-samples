@@ -5,6 +5,8 @@ namespace VirtualizingRecyclingScrollView;
 
 public static class MauiProgram
 {
+	public static int IsInVirtualizationScope = 0;
+
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
@@ -14,8 +16,11 @@ public static class MauiProgram
 			{
 				ViewHandler.ViewCommandMapper.ModifyMapping<IView, IViewHandler>(nameof(IView.InvalidateMeasure), (layout, handler, args, current) =>
 				{
-					// Comment this out to stop layout invalidation...
-					current?.Invoke(layout, handler, args);
+					if (MauiProgram.IsInVirtualizationScope == 0)
+					{
+						// Comment this out to stop layout invalidation...
+						current?.Invoke(layout, handler, args);
+					}
 				});
 			})
 			.ConfigureFonts(fonts =>

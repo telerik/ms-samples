@@ -155,6 +155,14 @@ public class TheScrollView : ScrollView
                 return 0;
             }
 
+#if NET9_0_OR_GREATER
+            MauiProgram.IsInVirtualizationScope++;
+#endif
+#if IOS
+            bool animations = UIKit.UIView.AnimationsEnabled;
+            UIKit.UIView.AnimationsEnabled = false;
+#endif
+
             this.currentLeft = left;
             this.currentRight = right;
             this.currentTop = top;
@@ -227,6 +235,13 @@ public class TheScrollView : ScrollView
             {
                 Console.WriteLine($"      +{added}/-{removed}");
             }
+
+#if NET9_0_OR_GREATER
+            MauiProgram.IsInVirtualizationScope--;
+#endif
+#if IOS
+            UIKit.UIView.AnimationsEnabled = animations;
+#endif
 
             return added + removed;
         }

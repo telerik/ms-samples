@@ -17,49 +17,73 @@
 
         <local:TrackingBorder x:Name="HeaderBackground" Grid.Row="0" Grid.RowSpan="2" Background="#AAFFFFFF" />
         <Grid Grid.Row="1" x:Name="HeaderContent">
-            <HorizontalStackLayout>
+            <VerticalStackLayout>
                 <local:TrackingLabel Text="Title" VerticalOptions="Center" Margin="10,0,10,0" FontSize="24" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-                <local:TrackingBorder Margin="2" Background="Red" WidthRequest="5" HeightRequest="5" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout HorizontalOptions="End">
+                <HorizontalStackLayout Margin="9,0,0,0">
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Margin="9,0,0,0">
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Margin="9,0,0,0">
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+            <Grid HorizontalOptions="End">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="16" />
+                    <RowDefinition Height="16" />
+                    <RowDefinition Height="16" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350" />
+                    <ColumnDefinition Width="120" />
+                </Grid.ColumnDefinitions>
                 <!-- NET9 (net8 leads to layout cycle) -->
-                <Label Text="{Binding LayoutNodes}" VerticalOptions="Center" HorizontalOptions="End" Margin="10,0,10,0" FontSize="14" WidthRequest="120" HeightRequest="30" />
-                <Label Text="{Binding LayoutVirtualNodes}" VerticalOptions="Center" HorizontalOptions="End" Margin="10,0,10,0" FontSize="14" WidthRequest="120" HeightRequest="30" />
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Shell El. Layout:" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding LayoutNodes}" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="120" HeightRequest="16" />
                 
-            </HorizontalStackLayout>
+                <Label Grid.Row="1" Grid.Column="0" Text="Virtual El. Layout:" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding LayoutVirtualNodes}" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="120" HeightRequest="16" />
+                
+                <Label Grid.Row="2" Grid.Column="0" Text="Dropped Frames:" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding DroppedFrames}" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="120" HeightRequest="16" />
+                
+            </Grid>
         </Grid>
         <local:TrackingBorder x:Name="FooterBackground" Grid.Row="3" Background="#AAFFFFFF" />
 
