@@ -15,7 +15,7 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <local:TrackingBorder x:Name="HeaderBackground" Grid.Row="0" Grid.RowSpan="2" Background="#AAFFFFFF" />
+        <local:TrackingBorder x:Name="HeaderBackground" Grid.Row="0" Grid.RowSpan="2" Background="#CCFFFFFF" />
         <Grid Grid.Row="1" x:Name="HeaderContent">
             <VerticalStackLayout>
                 <local:TrackingLabel Text="Title" VerticalOptions="Center" Margin="10,0,10,0" FontSize="24" />
@@ -85,7 +85,7 @@
                 
             </Grid>
         </Grid>
-        <local:TrackingBorder x:Name="FooterBackground" Grid.Row="3" Background="#AAFFFFFF" />
+        <local:TrackingBorder x:Name="FooterBackground" Grid.Row="3" Background="#CCFFFFFF" />
 
         <local:TheScrollView Grid.RowSpan="4" ZIndex="-1">
             <local:TheScrollView.Template>

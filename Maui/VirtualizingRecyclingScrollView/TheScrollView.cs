@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Security.AccessControl;
+using AuthenticationServices;
 using Microsoft.Maui.Layouts;
-using Microsoft.Maui.Platform;
 
 namespace VirtualizingRecyclingScrollView;
 
@@ -20,12 +21,23 @@ public class TheScrollView : ScrollView
     private Size size;
     private Rect rect;
 
-    private Container container;
+    private GraphicsView selectionOutline;
+    private SelectionDrawable selectionDrawable;
+
+    private VirtualizingLayout virtualizingLayout;
 
     public TheScrollView()
     {
-        this.container = new Container(this);
-        this.Content = container;
+        this.virtualizingLayout = new VirtualizingLayout(this);
+
+        this.selectionDrawable = new SelectionDrawable(this);
+        this.selectionOutline = new GraphicsView();
+        this.selectionOutline.Drawable = this.selectionDrawable;
+        this.selectionOutline.ZIndex = 1;
+        this.virtualizingLayout.Add(this.selectionOutline);
+
+        this.Content = virtualizingLayout;
+
         this.Scrolled += OnScrolled;
         this.Orientation = ScrollOrientation.Both;
     }
@@ -35,7 +47,7 @@ public class TheScrollView : ScrollView
         DateTime start = DateTime.Now;
         this.scroll = new Point(this.ScrollX, this.ScrollY);
         this.rect = new Rect(this.scroll.X, this.scroll.Y, this.size.Width, this.size.Height);
-        var change = this.container.layoutManager.RealizeViewport();
+        var change = this.virtualizingLayout.layoutManager.RealizeViewport();
         if (change != 0)
         {
             Console.WriteLine($" = OnScrolled {DateTime.Now - start}");
@@ -73,15 +85,15 @@ public class TheScrollView : ScrollView
         return size;
     }
 
-    private class Container : Layout
+    private class VirtualizingLayout : Layout
     {
         public TheScrollView scrollview;
-        public LayoutManager layoutManager;
+        public VirtualizingLayoutManager layoutManager;
 
-        public Container(TheScrollView scrollview)
+        public VirtualizingLayout(TheScrollView scrollview)
         {
             this.scrollview = scrollview;
-            this.layoutManager = new LayoutManager(this);
+            this.layoutManager = new VirtualizingLayoutManager(this);
         }
 
         protected override ILayoutManager CreateLayoutManager()
@@ -90,9 +102,9 @@ public class TheScrollView : ScrollView
         }
     }
 
-    private class LayoutManager : ILayoutManager, IEqualityComparer<Key>
+    private class VirtualizingLayoutManager : ILayoutManager, IEqualityComparer<Key>
     {
-        private Container container;
+        private VirtualizingLayout container;
 
         private Dictionary<Key, View> elements = new Dictionary<Key, View>();
 
@@ -105,7 +117,7 @@ public class TheScrollView : ScrollView
         private int currentTop = -1;
         private int currentBottom = -1;
 
-        public LayoutManager(Container container)
+        public VirtualizingLayoutManager(VirtualizingLayout container)
         {
             this.container = container;
         }
@@ -147,21 +159,20 @@ public class TheScrollView : ScrollView
         public int RealizeViewport()
         {
             int left = Math.Max(0, (int)Math.Floor(this.container.scrollview.rect.X / ColumnWidth));
-            int right = (int)Math.Ceiling((this.container.scrollview.rect.X + this.container.scrollview.rect.Width) / ColumnWidth);
+            int right = (int)Math.Ceiling((this.container.scrollview.rect.X + this.container.scrollview.rect.Width) / ColumnWidth) - 1;
             int top = Math.Max(0, (int)Math.Floor(this.container.scrollview.rect.Y / RowHeight));
-            int bottom = (int)Math.Ceiling((this.container.scrollview.rect.Y + this.container.scrollview.Height) / RowHeight);
+            int bottom = (int)Math.Ceiling((this.container.scrollview.rect.Y + this.container.scrollview.Height) / RowHeight) - 1;
 
             if (left == currentLeft && top != currentTop && right != currentRight && bottom != currentBottom)
             {
                 return 0;
             }
 
+            var outline = this.container.scrollview.selectionOutline;
+
+            // We need proper API to prevent propagation UP
 #if NET9_0_OR_GREATER
             MauiProgram.IsInVirtualizationScope++;
-#endif
-#if IOS
-            bool animations = UIKit.UIView.AnimationsEnabled;
-            UIKit.UIView.AnimationsEnabled = false;
 #endif
 
             this.currentLeft = left;
@@ -209,9 +220,14 @@ public class TheScrollView : ScrollView
                         var cellmodel = (CellModel)content.BindingContext;
                         cellmodel.key = key;
                         var code = this.container.layoutManager.GetHashCode(key);
+
+                        var color = this.container.scrollview.IsSelected(x, y) ?
+                            new Color(150 + code % 56, 150 + (code >> 4) % 56, 150 + (byte)(code >> 8) % 56) :
+                            new Color(200 + code % 56, 200 + (code >> 4) % 56, 200 + (byte)(code >> 8) % 56);
+
                         cellmodel.Update(
                             text: $"Cell {x} x {y}",
-                            color: new Color(200 + code % 56, 200 + (code >> 4) % 56, 200 + (byte)(code >> 8) % 56)
+                            color: color
                         );
 
                         elements[key] = content;
@@ -235,6 +251,16 @@ public class TheScrollView : ScrollView
                 this.trashbin.Push(popped);
             }
 
+            // Range for selection is expanded a little, so edge decorations would work well by the screen edge
+            
+            // Don't shrink the selection view. Sometimes there will be a frame where a line disappears on top and shortly after another appears at bottom... this avoids resizing.
+            var selectionRight = Math.Max(right + 1, left + this.container.scrollview.selectionDrawable.Width - 2);
+            var selectionBottom = Math.Max(bottom + 1, top + this.container.scrollview.selectionDrawable.Height - 2);
+
+            this.container.scrollview.selectionDrawable.SetVisibleRange(left - 1, top - 1, selectionRight, selectionBottom);
+            this.container.scrollview.selectionOutline.Arrange(new Rect((left - 1) * ColumnWidth, (top - 1) * RowHeight, (selectionRight - left + 2) * ColumnWidth, (selectionBottom - top + 2) * RowHeight));
+            this.container.scrollview.selectionOutline.Invalidate();
+
             if (removed != 0 || added != 0)
             {
                 Console.WriteLine($"      +{added}/-{removed}");
@@ -243,11 +269,59 @@ public class TheScrollView : ScrollView
 #if NET9_0_OR_GREATER
             MauiProgram.IsInVirtualizationScope--;
 #endif
-#if IOS
-            UIKit.UIView.AnimationsEnabled = animations;
-#endif
 
             return added + removed;
         }
     }
+
+    private class SelectionDrawable : IDrawable
+    {
+        private TheScrollView scrollview;
+
+        private int left = -1000;
+        private int top = -1000;
+        private int right = -1000;
+        private int bottom = -1000;
+
+        public SelectionDrawable(TheScrollView scrollview)
+        {
+            this.scrollview = scrollview;
+        }
+
+        public void Draw(ICanvas canvas, RectF dirtyRect)
+        {
+            canvas.StrokeColor = new Color(0x00, 0x22, 0x99, 0xFF);
+            canvas.StrokeSize = 3;
+
+            for (var x = left; x <= right; x++)
+            {
+                for (var y = top; y <= bottom; y++)
+                {
+                    if (this.scrollview.IsSelected(x, y))
+                    {
+                        Rect rect = new Rect(
+                            x: (float)((x - left) * ColumnWidth) -1,
+                            y: (float)((y - top) * RowHeight) - 1,
+                            width: (float)ColumnWidth + 1,
+                            height: (float)RowHeight + 1
+                        );
+                        canvas.DrawRectangle(rect);
+                    }
+                }
+            }
+        }
+
+        public int Width => this.right - this.left + 1;
+        public int Height => this.bottom - this.top + 1;
+
+        public void SetVisibleRange(int left, int top, int right, int bottom)
+        {
+            this.left = left;
+            this.top = top;
+            this.right = right;
+            this.bottom = bottom;
+        }
+    }
+
+    public bool IsSelected(int x, int y) => (x * 7883 + y * 7901) % 21 <= 3;
 }
