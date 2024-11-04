@@ -5,6 +5,8 @@ namespace VirtualizingRecyclingScrollView;
 
 public class CellModel : INotifyPropertyChanged
 {
+    private static PropertyChangedEventArgs changedAll = new PropertyChangedEventArgs(null);
+
     public Key key;
 
     private string text;
@@ -31,5 +33,12 @@ public class CellModel : INotifyPropertyChanged
             this.color = value;
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Color)));
         }
+    }
+
+    internal void Update(string text, Color color)
+    {
+        this.text = text;
+        this.color = color;
+        this.PropertyChanged?.Invoke(this, changedAll);
     }
 }

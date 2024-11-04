@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Maui.Layouts;
+using Microsoft.Maui.Platform;
 
 namespace VirtualizingRecyclingScrollView;
 
@@ -208,8 +209,11 @@ public class TheScrollView : ScrollView
                         var cellmodel = (CellModel)content.BindingContext;
                         cellmodel.key = key;
                         var code = this.container.layoutManager.GetHashCode(key);
-                        cellmodel.Color = new Color(200 + code % 56, 200 + (code >> 4) % 56, 200 + (byte)(code >> 8) % 56);
-                        cellmodel.Text = $"Cell {x} x {y}";
+                        cellmodel.Update(
+                            text: $"Cell {x} x {y}",
+                            color: new Color(200 + code % 56, 200 + (code >> 4) % 56, 200 + (byte)(code >> 8) % 56)
+                        );
+
                         elements[key] = content;
 
 
