@@ -133,8 +133,23 @@ public class TheScrollView : ScrollView
             // in net9, we Arrange once during Recycling
             foreach(var content in this.container.Children)
             {
-                var cellmodel = (content as View).BindingContext as CellModel;
-                content.Arrange(new Rect(cellmodel.key.x * ColumnWidth, cellmodel.key.y * RowHeight, ColumnWidth, RowHeight));
+                if (content == this.container.scrollview.selectionOutline)
+                {
+                    // BUG: The selectionOutline won't show up
+                    this.container.scrollview.selectionOutline.Arrange(
+                        new Rect(
+                            this.container.scrollview.selectionDrawable.Left * ColumnWidth,
+                            this.container.scrollview.selectionDrawable.Top * RowHeight,
+                            this.container.scrollview.selectionDrawable.Width * ColumnWidth,
+                            this.container.scrollview.selectionDrawable.Height * RowHeight
+                        )
+                    );
+                }
+                else
+                {
+                    var cellmodel = (content as View).BindingContext as CellModel;
+                    content.Arrange(new Rect(cellmodel.key.x * ColumnWidth, cellmodel.key.y * RowHeight, ColumnWidth, RowHeight));
+                }
             }
 #endif
 
@@ -146,10 +161,19 @@ public class TheScrollView : ScrollView
             
 #if NET8_0
             // net8 8.0.82 and 8.0.92 doesn't seem to work without measuring all children...
-            // in net9, we dont measure
+            // in net9, we don't measure
             foreach(var content in this.container.Children)
             {
-                content.Measure(double.PositiveInfinity, double.PositiveInfinity);
+                if (content == this.container.scrollview.selectionOutline)
+                {
+                    this.container.scrollview.selectionOutline.Measure(
+                        this.container.scrollview.selectionDrawable.Width * ColumnWidth,
+                        this.container.scrollview.selectionDrawable.Height * RowHeight);
+                }
+                else
+                {
+                    content.Measure(double.PositiveInfinity, double.PositiveInfinity);
+                }
             }
 #endif
 
@@ -258,7 +282,13 @@ public class TheScrollView : ScrollView
             var selectionBottom = Math.Max(bottom + 1, top + this.container.scrollview.selectionDrawable.Height - 2);
 
             this.container.scrollview.selectionDrawable.SetVisibleRange(left - 1, top - 1, selectionRight, selectionBottom);
-            this.container.scrollview.selectionOutline.Arrange(new Rect((left - 1) * ColumnWidth, (top - 1) * RowHeight, (selectionRight - left + 2) * ColumnWidth, (selectionBottom - top + 2) * RowHeight));
+
+            var outlineRect = new Rect((left - 1) * ColumnWidth, (top - 1) * RowHeight, (selectionRight - left + 2) * ColumnWidth, (selectionBottom - top + 2) * RowHeight);
+#if IOS && NET8_0
+            //BUG: Arrange in net8 doesn't work here, but also the arrange in the layout manager won't show up the selection outline.
+#else
+            this.container.scrollview.selectionOutline.Arrange(outlineRect);
+#endif
             this.container.scrollview.selectionOutline.Invalidate();
 
             if (removed != 0 || added != 0)
@@ -314,6 +344,11 @@ public class TheScrollView : ScrollView
         }
 
         public int Width => this.right - this.left + 1;
+
+        public int Left => this.left;
+
+        public int Top => this.top;
+
         public int Height => this.bottom - this.top + 1;
 
         public void SetVisibleRange(int left, int top, int right, int bottom)
