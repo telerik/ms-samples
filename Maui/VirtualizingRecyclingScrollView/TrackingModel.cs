@@ -20,7 +20,7 @@ public sealed class TrackingModel : INotifyPropertyChanged
 
     private const float MeasurementFPS = 60;
 
-#if IOS
+#if IOS || MACCATALYST
     private CoreAnimation.CADisplayLink displayLink;
 #endif
 
@@ -39,8 +39,8 @@ public sealed class TrackingModel : INotifyPropertyChanged
         };
         timer.Start();
 
-#if IOS
-        this.displayLink = CoreAnimation.CADisplayLink.Create(Frame);
+#if IOS || MACCATALYST
+        this.displayLink = CoreAnimation.CADisplayLink.Create(OnIosFrame);
         this.displayLink.PreferredFrameRateRange = new CoreAnimation.CAFrameRateRange()
         {
             Minimum = MeasurementFPS,
@@ -48,6 +48,9 @@ public sealed class TrackingModel : INotifyPropertyChanged
             Preferred = MeasurementFPS
         };
         this.displayLink.AddToRunLoop(Foundation.NSRunLoop.Main, Foundation.NSRunLoopMode.Common);
+#elif ANDROID
+        this.androidFrameCallback = new FrameCallback(this);
+        Android.Views.Choreographer.Instance!.PostFrameCallback(androidFrameCallback);
 #endif
     }
 
@@ -55,16 +58,43 @@ public sealed class TrackingModel : INotifyPropertyChanged
 
     double estimatedFrameLength = 1.05 / MeasurementFPS;
 
-    private void Frame()
+#if IOS || MACCATALYST
+    private void OnIosFrame()
     {
-#if IOS
         var elapsed = CoreAnimation.CAAnimation.CurrentMediaTime();
+        this.Frame(elapsed);
+    }
+#elif ANDROID
+
+    private FrameCallback androidFrameCallback;
+
+    class FrameCallback : Java.Lang.Object, Android.Views.Choreographer.IFrameCallback
+    {
+        private TrackingModel trackingModel;
+
+        public FrameCallback(TrackingModel trackingModel)
+        {
+            this.trackingModel = trackingModel;
+        }
+
+        public void DoFrame(long frameTimeNanos)
+        {
+            this.trackingModel.Frame(frameTimeNanos / 1000000000.0);
+            Android.Views.Choreographer.Instance!.PostFrameCallback(this);
+        }
+    }
+#endif
+
+    private void Frame(double elapsedSeconds)
+    {
         if (last == 0)
         {
-            last = elapsed;
+            last = elapsedSeconds;
             return;
         }
-        var duration = elapsed - last;
+        var duration = elapsedSeconds - last;
+        
+        // Console.WriteLine("Lastframe " + duration + " estimated " + estimatedFrameLength);
 
         // For macOS the simulator runs in 60 fps
         if (duration > estimatedFrameLength)
@@ -73,8 +103,7 @@ public sealed class TrackingModel : INotifyPropertyChanged
             this.DroppedFrames += droppedFrames;
             Console.WriteLine($"Dropped {this.DroppedFrames} frames! Next frame duration: {duration}");
         }
-        this.last = elapsed;
-#endif
+        this.last = elapsedSeconds;
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;

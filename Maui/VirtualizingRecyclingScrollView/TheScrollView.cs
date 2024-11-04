@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Security.AccessControl;
-using AuthenticationServices;
 using Microsoft.Maui.Layouts;
 
 namespace VirtualizingRecyclingScrollView;
@@ -57,7 +56,7 @@ public class TheScrollView : ScrollView
     protected override void OnHandlerChanged()
     {
         base.OnHandlerChanged();
-#if IOS
+#if IOS || MACCATALYST
         var scrollview = (UIKit.UIScrollView)this.Handler.PlatformView;
         scrollview.ContentInset = new UIKit.UIEdgeInsets(60, 0, 50, 0);
         scrollview.VerticalScrollIndicatorInsets = new UIKit.UIEdgeInsets(50, 0, 20, 0);
@@ -284,7 +283,7 @@ public class TheScrollView : ScrollView
             this.container.scrollview.selectionDrawable.SetVisibleRange(left - 1, top - 1, selectionRight, selectionBottom);
 
             var outlineRect = new Rect((left - 1) * ColumnWidth, (top - 1) * RowHeight, (selectionRight - left + 2) * ColumnWidth, (selectionBottom - top + 2) * RowHeight);
-#if IOS && NET8_0
+#if (IOS || MACCATALYST) && NET8_0
             //BUG: Arrange in net8 doesn't work here, but also the arrange in the layout manager won't show up the selection outline.
 #else
             this.container.scrollview.selectionOutline.Arrange(outlineRect);
