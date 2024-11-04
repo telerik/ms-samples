@@ -11,9 +11,14 @@ public sealed class TrackingModel : INotifyPropertyChanged
     private uint layoutVirtualNodes = 0;
 
     private uint printedLayoutNodes = 0;
+
     private uint printedLayoutVirtualNodes = 0;
 
+    private uint recycledItems = 0;
+
     private uint droppedFrames = 0;
+
+    private const float MeasurementFPS = 60;
 
 #if IOS
     private CoreAnimation.CADisplayLink displayLink;
@@ -36,14 +41,19 @@ public sealed class TrackingModel : INotifyPropertyChanged
 
 #if IOS
         this.displayLink = CoreAnimation.CADisplayLink.Create(Frame);
+        this.displayLink.PreferredFrameRateRange = new CoreAnimation.CAFrameRateRange()
+        {
+            Minimum = MeasurementFPS,
+            Maximum = MeasurementFPS,
+            Preferred = MeasurementFPS
+        };
         this.displayLink.AddToRunLoop(Foundation.NSRunLoop.Main, Foundation.NSRunLoopMode.Common);
 #endif
     }
 
     double last = 0;
 
-    // On real device that may be 120. We assume 60-ish on sim.
-    double estimatedFrameLength = 1.05 / 60;
+    double estimatedFrameLength = 1.05 / MeasurementFPS;
 
     private void Frame()
     {
@@ -96,6 +106,16 @@ public sealed class TrackingModel : INotifyPropertyChanged
         {
             this.layoutVirtualNodes = value;
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LayoutVirtualNodes)));
+        }
+    }
+
+    public uint RecycledItems
+    {
+        get => this.recycledItems;
+        set
+        {
+            this.recycledItems = value;
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RecycledItems)));
         }
     }
 }

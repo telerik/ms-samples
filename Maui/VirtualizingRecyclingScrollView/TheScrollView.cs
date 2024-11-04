@@ -270,6 +270,8 @@ public class TheScrollView : ScrollView
             MauiProgram.IsInVirtualizationScope--;
 #endif
 
+            TrackingModel.Instance.RecycledItems += (uint)removed;
+
             return added + removed;
         }
     }
@@ -300,10 +302,10 @@ public class TheScrollView : ScrollView
                     if (this.scrollview.IsSelected(x, y))
                     {
                         Rect rect = new Rect(
-                            x: (float)((x - left) * ColumnWidth) -1,
-                            y: (float)((y - top) * RowHeight) - 1,
-                            width: (float)ColumnWidth + 1,
-                            height: (float)RowHeight + 1
+                            x: (float)((x - left) * ColumnWidth),
+                            y: (float)((y - top) * RowHeight),
+                            width: (float)ColumnWidth,
+                            height: (float)RowHeight
                         );
                         canvas.DrawRectangle(rect);
                     }

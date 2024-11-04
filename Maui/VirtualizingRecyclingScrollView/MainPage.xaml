@@ -5,7 +5,8 @@
              xmlns:local="clr-namespace:VirtualizingRecyclingScrollView"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="False"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             Background="White">
 
     <Grid IgnoreSafeArea="True">
         <Grid.RowDefinitions>
@@ -15,10 +16,10 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <local:TrackingBorder x:Name="HeaderBackground" Grid.Row="0" Grid.RowSpan="2" Background="#CCFFFFFF" />
+        <local:TrackingBorder x:Name="HeaderBackground" Grid.Row="0" Grid.RowSpan="2" Background="#DDFFFFFF" />
         <Grid Grid.Row="1" x:Name="HeaderContent">
             <VerticalStackLayout>
-                <local:TrackingLabel Text="Title" VerticalOptions="Center" Margin="10,0,10,0" FontSize="24" />
+                <local:TrackingLabel Text="Title" TextColor="Black" VerticalOptions="Center" Margin="10,0,10,0" FontSize="24" />
                 <HorizontalStackLayout Margin="9,0,0,0">
                     <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
                     <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
@@ -64,38 +65,42 @@
             </VerticalStackLayout>
             <Grid HorizontalOptions="End">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="16" />
-                    <RowDefinition Height="16" />
-                    <RowDefinition Height="16" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="20" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="350" />
                     <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="50" />
                 </Grid.ColumnDefinitions>
                 <!-- NET9 (net8 leads to layout cycle) -->
 
-                <Label Grid.Row="0" Grid.Column="0" Text="Shell El. Layout:" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
-                <Label Grid.Row="0" Grid.Column="1" Text="{Binding LayoutNodes}" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="120" HeightRequest="16" />
+                <Label Grid.Row="0" Grid.Column="0" Text="Shell El. Layout:" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding LayoutNodes}" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="60" HeightRequest="16" />
                 
-                <Label Grid.Row="1" Grid.Column="0" Text="Virtual El. Layout:" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
-                <Label Grid.Row="1" Grid.Column="1" Text="{Binding LayoutVirtualNodes}" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="120" HeightRequest="16" />
+                <Label Grid.Row="1" Grid.Column="0" Text="Virtual El. Layout:" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding LayoutVirtualNodes}" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="60" HeightRequest="16" />
                 
-                <Label Grid.Row="2" Grid.Column="0" Text="Dropped Frames:" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
-                <Label Grid.Row="2" Grid.Column="1" Text="{Binding DroppedFrames}" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="120" HeightRequest="16" />
+                <Label Grid.Row="0" Grid.Column="2" Text="Recycled Items:" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
+                <Label Grid.Row="0" Grid.Column="3" Text="{Binding RecycledItems}" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="50" HeightRequest="16" />
+
+                <Label Grid.Row="1" Grid.Column="2" Text="Dropped Frames:" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
+                <Label Grid.Row="1" Grid.Column="3" Text="{Binding DroppedFrames}" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="50" HeightRequest="16" />
                 
             </Grid>
         </Grid>
-        <local:TrackingBorder x:Name="FooterBackground" Grid.Row="3" Background="#CCFFFFFF" />
+        <local:TrackingBorder x:Name="FooterBackground" Grid.Row="3" Background="#DDFFFFFF" />
 
         <local:TheScrollView Grid.RowSpan="4" ZIndex="-1">
             <local:TheScrollView.Template>
                 <DataTemplate x:DataType="local:CellModel">
                     <!-- Slim template: we can't trim further than that -->
-                    <local:TrackingLabel Virtualized="True" Text="{Binding Text}" Background="{Binding Color}" Margin="2" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    <local:TrackingLabel Virtualized="True" Text="{Binding Text}" TextColor="Black" Background="{Binding Color}" Margin="2" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
 
                     <!-- Medium template: no triggers or visual states -->
                     <!-- <local:TrackingBorder Virtualized="True" Background="{Binding Color}" Margin="1" StrokeThickness="1" Stroke="DarkGray">
-                        <local:TrackingLabel Virtualized="True" Text="{Binding Text}" Margin="2" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                        <local:TrackingLabel Virtualized="True" Text="{Binding Text}" TextColor="Black" Margin="2" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                     </local:TrackingBorder> -->
 
                     <!-- Fat template: That would include a border, a grid, icon and a label, maybe interactive with a trigger -->
