@@ -41,12 +41,6 @@ public sealed class TrackingModel : INotifyPropertyChanged
 
 #if IOS || MACCATALYST
         this.displayLink = CoreAnimation.CADisplayLink.Create(OnIosFrame);
-        this.displayLink.PreferredFrameRateRange = new CoreAnimation.CAFrameRateRange()
-        {
-            Minimum = MeasurementFPS,
-            Maximum = MeasurementFPS,
-            Preferred = MeasurementFPS
-        };
         this.displayLink.AddToRunLoop(Foundation.NSRunLoop.Main, Foundation.NSRunLoopMode.Common);
 #elif ANDROID
         this.androidFrameCallback = new FrameCallback(this);
@@ -104,6 +98,15 @@ public sealed class TrackingModel : INotifyPropertyChanged
             Console.WriteLine($"Dropped {this.DroppedFrames} frames! Next frame duration: {duration}");
         }
         this.last = elapsedSeconds;
+    }
+
+    internal void Clear()
+    {
+        this.droppedFrames = 0;
+        this.layoutNodes = 0;
+        this.layoutVirtualNodes = 0;
+        this.recycledItems = 0;
+        this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;

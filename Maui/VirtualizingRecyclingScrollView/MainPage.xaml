@@ -91,7 +91,7 @@
         </Grid>
         <local:TrackingBorder x:Name="FooterBackground" Grid.Row="3" Background="#DDFFFFFF" />
 
-        <local:TheScrollView Grid.RowSpan="4" ZIndex="-1">
+        <local:TheScrollView x:Name="SV" Grid.RowSpan="4" ZIndex="-1">
             <local:TheScrollView.Template>
                 <DataTemplate x:DataType="local:CellModel">
                     <!-- Slim template: we can't trim further than that -->

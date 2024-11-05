@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Runtime.CompilerServices;
+using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Handlers;
 
 namespace VirtualizingRecyclingScrollView;
@@ -6,6 +7,7 @@ namespace VirtualizingRecyclingScrollView;
 public static class MauiProgram
 {
 	public static int IsInVirtualizationScope = 0;
+	public static bool SuppressWorkarounds = false;
 
 	public static MauiApp CreateMauiApp()
 	{
@@ -16,7 +18,7 @@ public static class MauiProgram
 			{
 				ViewHandler.ViewCommandMapper.ModifyMapping<IView, IViewHandler>(nameof(IView.InvalidateMeasure), (layout, handler, args, current) =>
 				{
-					if (MauiProgram.IsInVirtualizationScope == 0)
+					if (MauiProgram.SuppressWorkarounds || MauiProgram.IsInVirtualizationScope == 0)
 					{
 						// Comment this out to stop layout invalidation...
 						current?.Invoke(layout, handler, args);
