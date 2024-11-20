@@ -18,3 +18,4 @@ The short syntax to work the same way as adding Row/ColumnDefinitions one by one
 The grid is not invalidated when using the short syntax and values of Height/Width change.
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/25983
