@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GridRowsShortSyntax.MainPage">
+
+    <Grid x:Name="grid" RowDefinitions="50,100,200">
+        <Button Text="Resize" Clicked="Button_Clicked"></Button>
+        <Label BackgroundColor="Red" Grid.Row="1"></Label>
+        <Label BackgroundColor="Blue" Grid.Row="2"></Label>
+    </Grid>
+
+    <!--<Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Text="Resize" Clicked="Button_Clicked"></Button>
+        <Label BackgroundColor="Red" Grid.Row="1"></Label>
+        <Label BackgroundColor="Blue" Grid.Row="2"></Label>
+    </Grid>-->
+</ContentPage>
