@@ -12,3 +12,5 @@
 ### Issue
 ***Expected***: after removing the implicit style from the resource dictionary, is to revert all buttons to blue
 ***Actual***: after removing the implicit style from the resource dictionary all buttons remain red or green, until mouse-overed, when mouse-overed the VisualStateManager somehow figures out it should revert some values to the default style from App.xaml
+
+link: https://github.com/dotnet/maui/issues/26208
