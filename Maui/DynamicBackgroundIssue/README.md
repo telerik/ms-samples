@@ -14,3 +14,4 @@ The Background of the MainPage to be changed.
 The application freezes.
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/27281
