@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PerformanceMetricsSample"
+             x:Class="PerformanceMetricsSample.MainPage">
+    <Grid RowDefinitions="Auto, *">
+        <Grid ColumnDefinitions="Auto, *">
+            <Label x:Name="FrameStatsLabel"
+                   Text="FPS: --, Dropped: --"
+                   FontSize="14"
+                   TextColor="Lime"
+                   BackgroundColor="Black"
+                   Padding="8"
+                   HorizontalOptions="Start"/>
+            <Button Grid.Column="1"
+                    Text="Measure/Arrange Stats"
+                    Clicked="Button_Clicked"/>
+        </Grid>
+        <local:VirtualizedScrollView x:Name="sv"
+                Grid.Row="1">
+            <local:VirtualizedScrollView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding}"
+                           TextColor="White"
+                           FontSize="12"/>
+                </DataTemplate>
+            </local:VirtualizedScrollView.ItemTemplate>
+        </local:VirtualizedScrollView>
+    </Grid>
+</ContentPage>
