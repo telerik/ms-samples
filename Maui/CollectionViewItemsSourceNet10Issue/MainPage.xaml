@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CollectionViewItemsSourceNet10Issue"
+             x:Class="CollectionViewItemsSourceNet10Issue.MainPage">
+
+    <local:CustomLayout>
+        <Entry Grid.Row="0" 
+               x:Name="SearchEntry"
+               Placeholder="Enter text here..."
+               TextChanged="OnSearchTextChanged" />
+        
+        <CollectionView Grid.Row="1"
+                        x:Name="ItemsCollectionView" />
+        
+    </local:CustomLayout>
+
+</ContentPage>
