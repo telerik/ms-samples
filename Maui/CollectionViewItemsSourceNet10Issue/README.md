@@ -14,3 +14,4 @@ The CollectionView should visualize a single item "Germany".
 The CollectionView doesn't visualize any item and measure returns zero.
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/30953
