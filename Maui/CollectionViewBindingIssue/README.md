@@ -14,3 +14,4 @@ The clear command should be invoked as expected.
 The clear command is not invoked once the container is reused.
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/31042
