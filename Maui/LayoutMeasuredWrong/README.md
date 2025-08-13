@@ -26,5 +26,5 @@ iOS \& MacCatalyst:
 * Results from child.Measure are identical to WidthRequest/HeightRequest set to the child.
 
 **Link to issue**
-To be added.
+https://github.com/dotnet/maui/issues/31150
 
