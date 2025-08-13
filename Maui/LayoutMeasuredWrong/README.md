@@ -10,9 +10,9 @@ There is a mismatch between WidthRequest/HeightRequest and Measure results for l
 WidthConstraint/HeightConstraint args in the Measure method of the LayoutManager will match WidthRequest/HeightRequest of the Layout and the result of Measure applied to a child of the Layout will match the WidthRequest/HeightRequest set to the child.
 
 **Actual Behavior**
-WinUI: 
+WinUI:
 
-* WidthConstraint/HeightConstraint in Measure of the LayoutManager differ from WidthRequest/HeightRequest with a very small amount (sometimes up, sometimes down) probably due to rounding when converting to physical pixels and back to dpi.
+* WidthConstraint/HeightConstraint in Measure of the LayoutManager differ from WidthRequest/HeightRequest with a very small amount (sometimes up, sometimes down) probably due to rounding when converting to physical pixels and back to dip.
 * Results from child.Measure also deviate from WidthRequest/HeightRequest with a small amount.
 
 Android:
