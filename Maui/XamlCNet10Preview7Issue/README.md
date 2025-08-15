@@ -16,3 +16,4 @@ The project builds successfully, and the custom control MyButton is recognized b
 The build fails with the following compile-time error from XamlC: XamlC error XC0000: Cannot resolve type "http://schemas.microsoft.com/dotnet/2021/maui:MyButton"
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/31186
