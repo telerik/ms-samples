@@ -22,4 +22,4 @@ We expect to get the same width for Measure and Arrange.
 The widths are different.
 
 **Link to issue**
-TO DO
+https://github.com/dotnet/maui/issues/31293
