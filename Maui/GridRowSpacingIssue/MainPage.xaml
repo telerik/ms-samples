@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GridRowSpacingIssue"
+             x:Class="GridRowSpacingIssue.MainPage">
+    <Grid ColumnSpacing="20"
+          ColumnDefinitions="*,*,*"
+          RowDefinitions="Auto, *">
+        <local:MyLayout Grid.ColumnSpan="3"
+                        Grid.Row="1"
+                        Background="LightGreen">
+            <ScrollView Background="LightBlue">
+                <Grid HeightRequest="3000" WidthRequest="3000" />
+            </ScrollView>
+        </local:MyLayout>
+    </Grid>
+    
+    <!-- Working as expected -->
+    <!-- <Grid ColumnSpacing="20"
+          ColumnDefinitions="*,*,*">
+        <local:MyLayout Grid.ColumnSpan="3"
+                        Background="LightGreen">
+            <ScrollView Background="LightBlue">
+                <Grid HeightRequest="3000" WidthRequest="3000" />
+            </ScrollView>
+        </local:MyLayout>
+    </Grid> -->
+</ContentPage>
