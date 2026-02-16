@@ -27,3 +27,4 @@ The application should run as expected.
 A NullReferenceException is thrown.
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/34074
