@@ -11,9 +11,9 @@ We’ve updated to SR4 and enabled SourceGen. The XAML compiled as expected with
 
 the following exception is thrown:
 
-System.NullReferenceException: Object reference not set to an instance of an object. at SourceGenRuntimeException.MainPage.InitializeComponent() in /Users/apopatan/Desktop/SourceGenRuntimeException/obj/Generated/Microsoft.Maui.Controls.SourceGen/Microsoft.Maui.Controls.SourceGen.XamlGenerator/MainPage.xaml.xsg.cs:line 93
-at SourceGenRuntimeException.MainPage..ctor() in /Users/apopatan/Desktop/SourceGenRuntimeException/MainPage.xaml.cs:line 9
-at SourceGenRuntimeException.App.CreateWindow(IActivationState activationState) in /Users/apopatan/Desktop/SourceGenRuntimeException/App.xaml.cs:line 14
+System.NullReferenceException: Object reference not set to an instance of an object. at SourceGenRuntimeException.MainPage.InitializeComponent() in /Users/test/Desktop/SourceGenRuntimeException/obj/Generated/Microsoft.Maui.Controls.SourceGen/Microsoft.Maui.Controls.SourceGen.XamlGenerator/MainPage.xaml.xsg.cs:line 93
+at SourceGenRuntimeException.MainPage..ctor() in /Users/test/Desktop/SourceGenRuntimeException/MainPage.xaml.cs:line 9
+at SourceGenRuntimeException.App.CreateWindow(IActivationState activationState) in /Users/test/Desktop/SourceGenRuntimeException/App.xaml.cs:line 14
 at Microsoft.Maui.Controls.Application.Microsoft.Maui.IApplication.CreateWindow(IActivationState activationState)
 
 **Steps to reproduce:**
