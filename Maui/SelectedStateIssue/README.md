@@ -93,3 +93,4 @@ protected override void ChangeVisualState()
 The `IsEnabled` guard avoids a redundant `Normal → Disabled` double transition when the element is disabled (in that case `base.ChangeVisualState()` takes the `!IsEnabled` branch directly and never reaches `IsElementInSelectedState()`).
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/35399
