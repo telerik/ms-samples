@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VirtualizingRecyclingScrollView.MainPage"
+             xmlns:local="clr-namespace:VirtualizingRecyclingScrollView"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False"
+             Shell.NavBarIsVisible="False"
+             Background="White">
+
+    <Grid IgnoreSafeArea="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <local:TrackingBorder x:Name="HeaderBackground" Grid.Row="0" Grid.RowSpan="2" Background="#DDFFFFFF" />
+        <Grid Grid.Row="1" x:Name="HeaderContent">
+            <VerticalStackLayout>
+                <local:TrackingLabel Text="Title" TextColor="Black" VerticalOptions="Center" Margin="10,0,10,0" FontSize="24" />
+                <HorizontalStackLayout Margin="9,0,0,0">
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Margin="9,0,0,0">
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Margin="9,0,0,0">
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                    <local:TrackingBorder Background="Red" WidthRequest="5" HeightRequest="5" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+            <Grid HorizontalOptions="End">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Shell El. Layout:" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding LayoutNodes}" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="60" HeightRequest="16" />
+                
+                <Label Grid.Row="1" Grid.Column="0" Text="Virtual El. Layout:" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding LayoutVirtualNodes}" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="60" HeightRequest="16" />
+                
+                <Label Grid.Row="0" Grid.Column="2" Text="Recycled Items:" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
+                <Label Grid.Row="0" Grid.Column="3" Text="{Binding RecycledItems}" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="50" HeightRequest="16" />
+
+                <Label Grid.Row="1" Grid.Column="2" Text="Dropped Frames:" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End" FontSize="14" />
+                <Label Grid.Row="1" Grid.Column="3" Text="{Binding DroppedFrames}" TextColor="Black" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="14" WidthRequest="50" HeightRequest="16" />
+                
+            </Grid>
+        </Grid>
+        <local:TrackingBorder x:Name="FooterBackground" Grid.Row="3" Background="#DDFFFFFF" />
+
+        <local:TheScrollView x:Name="SV" Grid.RowSpan="4" ZIndex="-1">
+            <local:TheScrollView.Template>
+                <DataTemplate x:DataType="local:CellModel">
+                    <!-- Slim template: we can't trim further than that -->
+                    <local:TrackingLabel Virtualized="True" Text="{Binding Text}" TextColor="Black" Background="{Binding Color}" Margin="2" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                    <!-- Medium template: no triggers or visual states -->
+                    <!-- <local:TrackingBorder Virtualized="True" Background="{Binding Color}" Margin="1" StrokeThickness="1" Stroke="DarkGray">
+                        <local:TrackingLabel Virtualized="True" Text="{Binding Text}" TextColor="Black" Margin="2" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    </local:TrackingBorder> -->
+
+                    <!-- Fat template: That would include a border, a grid, icon and a label, maybe interactive with a trigger -->
+                </DataTemplate>
+            </local:TheScrollView.Template>
+        </local:TheScrollView>
+    </Grid>
+
+</ContentPage>
