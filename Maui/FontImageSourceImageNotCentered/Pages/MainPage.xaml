@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiApp1.Pages.MainPage"
+             xmlns:fonts="clr-namespace:Fonts"
+             x:Name="OverviewPage">
+    <ContentPage.Resources>
+        <Color x:Key="DarkOnLightBackground">#0D0D0D</Color>
+        <Color x:Key="LightOnDarkBackground">#C3C3C3</Color>
+    </ContentPage.Resources>
+
+    <Grid ColumnDefinitions="Auto, Auto"
+          ColumnSpacing="10"
+          HorizontalOptions="Center">
+        <Grid RowDefinitions="*" Background="LightGray" HeightRequest="36" WidthRequest="36" Grid.Column="0">
+            <Image IsVisible="Visible"
+                   WidthRequest="16"
+                   HeightRequest="16"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Aspect="Center">
+                <Image.Source>
+                    <FontImageSource Glyph="&#xF3Cc;"
+                                     FontFamily="{x:Static fonts:FluentUI.FontFamily}"
+                                     Size="16"
+                                     Color="{AppThemeBinding Light={StaticResource DarkOnLightBackground},Dark={StaticResource LightOnDarkBackground}}"/>
+                </Image.Source>
+            </Image>
+        </Grid>
+        <Grid Grid.Column="1" RowDefinitions="*" Background="LightSteelBlue" HeightRequest="36" WidthRequest="36">
+            <Image IsVisible="Visible"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   WidthRequest="16"
+                   HeightRequest="16"
+                   Aspect="Center">
+                <Image.Source>
+                    <FontImageSource Glyph="&#xF3CA;"
+                                     FontFamily="{x:Static fonts:FluentUI.FontFamily}"
+                                     Size="16"
+                                     Color="{AppThemeBinding Light={StaticResource DarkOnLightBackground},Dark={StaticResource LightOnDarkBackground}}"/>
+                </Image.Source>
+            </Image>
+        </Grid>
+    </Grid>
+</ContentPage>
