@@ -16,3 +16,4 @@ When `WidthRequest`/`HeightRequest` on the `Image` is set to the exact same valu
 The issue was introduced with the following PR: https://github.com/dotnet/maui/pull/30068
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/35618
