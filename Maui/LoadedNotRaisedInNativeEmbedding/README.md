@@ -1,3 +1,6 @@
+**Update** (13.08.2026)
+Updated to MAUI 10.0.90 and re-tested. Loaded and Unloaded events are triggered as expected.
+
 **Description of the issue**
 The Loaded and Unloaded events are not raised for Maui elements when in Native Embedding
 
