@@ -1,5 +1,5 @@
 ﻿using Microsoft.Maui;
-using Microsoft.Maui.Embedding;
+using Microsoft.Maui.Controls.Embedding;
 using Microsoft.Maui.Hosting;
 using Microsoft.UI.Xaml;
 
@@ -21,7 +21,7 @@ public partial class App : Application
     public static void InitMaui()
     {
         MauiAppBuilder builder = MauiApp.CreateBuilder();
-        builder.UseMauiEmbedding<Microsoft.Maui.Controls.Application>();
+        builder.UseMauiEmbeddedApp<Microsoft.Maui.Controls.Application>();
         MauiApp mauiApp = builder.Build();
         _mauiContext = new MauiContext(mauiApp.Services);
     }
