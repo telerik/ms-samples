@@ -35,3 +35,4 @@ hover color, without flicker.
 `Transparent Button` flickers while pointer enter/leave transitions occur.
 
 **Link to issue**
+https://github.com/dotnet/maui/issues/39017
